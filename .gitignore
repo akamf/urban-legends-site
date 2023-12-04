@@ -1,0 +1,21 @@
+# Python exclusives
+__pycache__
+.ipynb_checkpoints
+.idea
+
+# Executables
+*.exe
+*.o
+*.out
+*.pyc
+*.pyd
+
+# Environment variables configs
+*.env
+
+# Build directory
+build
+
+# Project directories
+.venv
+.vscode
