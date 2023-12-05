@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %} {% endblock %}</title>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+
+        {% block head %} {% endblock %}
+    </head>
+    <body>
+        <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <div class="logo">
+                <p>Urban Legends</p>
+            </div>
+            <ul>
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="/legend">Legend</a></li>
+                <li><a href="/game">The Game</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        {% block content %} {% endblock %}
+        {% block scripts %} {% endblock %}
+    </body>
+</html>
