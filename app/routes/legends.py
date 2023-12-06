@@ -2,6 +2,7 @@ import requests
 
 from flask import render_template, redirect, jsonify
 
+from routes.utils import get_random_legend
 from blueprints import bp_legends
 
 @bp_legends.get('/')
@@ -14,12 +15,8 @@ def about():
 
 @bp_legends.get('/legend')
 def random_legend():
-    id = requests.get('http://127.0.0.1:8000/legends/random-id').json()
-
-    response = requests.get(f'http://localhost:8000/legends/legend/{id}')
-    data = response.json()
-    
-    return render_template('random-legend.html', legend=data)
+    legend = get_random_legend('http://127.0.0.1:8000/legends/')
+    return render_template('random-legend.html', legend=legend)
 
 @bp_legends.get('/legend/submit')
 def submit_get():
