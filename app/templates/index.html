@@ -2,12 +2,72 @@
 {% block title %}Urban Legends{% endblock %}
 
 {% block content %}
-<section class="section">
-    <div class="home-text">
-        <h1>Urban Legends</h1>
-        <p>
-            Test Paragraf
-        </p>
+<section id="hero">
+<div id="heroCarousel" data-bs-interval="12000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+    <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+    <div class="carousel-inner" role="listbox">
+
+    <div class="carousel-item active" style="background-image: url(static/img/slide/slide-1.jpg)">
+        <div class="carousel-container">
+        <div class="container">
+            <h2 class="animate__animated animate__fadeInDown">Welcome to a world of <span>Urban Legends</span></h2>
+            <p class="animate__animated animate__fadeInUp">
+                Embark on a digital odyssey into the heart of urban legends on this website. 
+                Uncover chilling tales of haunted locales, unsolved mysteries, and legendary figures that haunt city streets. 
+                Whether you're a seasoned seeker of the supernatural or a curious newcomer, our curated stories blur the line between fact and folklore.<br>
+                Join us in exploring the captivating and mysterious narratives that weave through the urban landscape.
+            </p>
+            <a href="{{ url_for('bp_legends.random_legend') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Explore an Urban Legend</a>
+        </div>
+        </div>
     </div>
+
+    <div class="carousel-item" style="background-image: url(static/img/slide/slide-2.jpg)">
+        <div class="carousel-container">
+        <div class="container">
+            <h2 class="animate__animated animate__fadeInDown">Legends Unveiled: Truth or Tale</h2>
+            <p class="animate__animated animate__fadeInUp">
+                Test your wits as three intriguing urban legends unfold before you in our Urban Legend Game. 
+                Delve into the realm of the unknown, make your guesses, and discover the truths behind these captivating tales.<br>
+                Can you separate fact from fiction in this immersive and suspenseful gaming experience?
+            </p>
+            <a href="{{ url_for('bp_legends.game_get') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Play The Game</a>
+        </div>
+        </div>
+    </div>
+
+    <div class="carousel-item" style="background-image: url(static/img/slide/slide-3.jpg)">
+        <div class="carousel-container">
+        <div class="container">
+            <h2 class="animate__animated animate__fadeInDown">Contribute</h2>
+            <p class="animate__animated animate__fadeInUp">
+                Join me in expanding the tapestry of urban legends! 
+                Contribute to this platform by submitting your own captivating tales, enriching the ever-growing collection of narratives that define the mysterious world we explore.<br>
+                Your unique stories breathe life into the digital realm, making this platform a collaborative space for enthusiasts and storytellers alike. 
+                Use the website to share your urban legends, adding your voice to the collective tapestry of enigma. Let's build a community where creativity thrives, and the boundaries between fact and fiction blur in the intriguing world of urban legends.
+            </p>
+            <a href="{{ url_for('bp_legends.submit_get') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Submit</a>
+        </div>
+        </div>
+    </div>
+
+    </div>
+
+    <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+    </a>
+
+    <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+    <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+    </a>
+
+</div>
 </section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 {% endblock %}
