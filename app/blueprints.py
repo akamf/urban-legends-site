@@ -7,4 +7,11 @@ bp_legends = Blueprint(
     url_prefix='/'
 )
 
+bp_game = Blueprint(
+    name='bp_game',
+    import_name=__name__,
+    template_folder='./templates',
+    url_prefix='/the-game/'
+)
+
 from routes.legends import *

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Submit Urban Legend - Like a Legend!{% endblock %}
+
+{% block content %}
+<main id="main">
+
+<section id="contact" class="contact">
+    <div class="container">
+
+    <div class="section-title">
+        <h2>Unleash the Unknown: Submit Your Urban Legend</h2>
+        <p>
+            Submitting your urban legend adds a unique thread to the rich tapestry of narratives we're building together. 
+            Our careful review process, overseen by administrators, ensures the quality and authenticity of each submission. 
+            We value your contribution in maintaining the integrity of our platform, making it a trustworthy source for urban legends enthusiasts.<br>
+            Thank you for enriching our community with your stories, as each submission adds depth and diversity to our shared exploration of the mysterious and unknown.
+        </p>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-13 mt-5 mt-lg-0 d-flex align-items-stretch">
+            <form action="{{ url_for('bp_legends.submit_post') }}" method="post" role="form" class="php-email-form">
+                <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="name">Your Name</label>
+                    <input type="text" name="name" class="form-control" id="name" required>
+                </div>
+                <div class="form-group col-md-6 mt-3 mt-md-0">
+                    <label for="name">Rating (True/False)</label>
+                    <input type="text" class="form-control" id="rating" required>
+                </div>
+                </div>
+                <div class="form-group mt-3">
+                <label for="name">Title</label>
+                <input type="text" class="form-control" name="subject" id="subject" required>
+                </div>
+                <div class="form-group mt-3">
+                <label for="name">Claim</label>
+                <textarea class="form-control" name="message" rows="10" required></textarea>
+                </div>
+                <div class="text-center"><button type="submit">Submit</button></div>
+            </form>
+            </div>
+    </div>
+
+    </div>
+</section><!-- End Contact Section -->
+
+</main><!-- End #main -->
+
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+{% endblock %}
+{% block scripts %}
+<script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="static/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="static/vendor/swiper/swiper-bundle.min.js"></script>
+{% endblock %}

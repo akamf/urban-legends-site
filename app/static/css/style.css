@@ -1252,7 +1252,7 @@ section {
   border-top: 3px solid #791111;
   border-bottom: 3px solid #791111;
   padding: 30px;
-  background: #fff;
+  background: #1d1b1b;
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
 }
 
@@ -1332,7 +1332,7 @@ section {
 }
 
 .contact .php-email-form button[type=submit]:hover {
-  background: #6ec083;
+  background: #360202;
 }
 
 @keyframes animate-loading {

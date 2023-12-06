@@ -3,7 +3,7 @@ import requests
 from flask import render_template, redirect, jsonify
 
 from routes.utils import get_random_legend
-from blueprints import bp_legends
+from blueprints import bp_legends, bp_game
 
 @bp_legends.get('/')
 def index():
@@ -18,25 +18,24 @@ def random_legend():
     legend = get_random_legend('http://127.0.0.1:8000/legends/')
     return render_template('random-legend.html', legend=legend)
 
-@bp_legends.get('/legend/submit')
+@bp_legends.get('/submit')
 def submit_get():
-    # Submitta en legend för review (använd kontaktformuläret)
-    render_template('submit.html')
+    return render_template('submit.html')
 
-@bp_legends.post('/legend/submit')
+@bp_legends.post('/submit')
 def submit_post():
-    render_template('submit.html')
+    return render_template('submit-thanks.html')
 
-@bp_legends.get('/the-game/play')
+@bp_game.get('/play')
 def game_get():
     # Hämta tre random legender, där EN ska vara sann och presenterar dem. Spelaren sak gissa vilek som är sann
     return render_template('game.html')
 
-@bp_legends.post('/the-game/play')
+@bp_game.post('/play')
 def game_post():
     # Tre knappar som spelaren får trycka vilken de tror är sann
     return render_template('game.html')
 
-@bp_legends.get('/the-game/leaderboard')
+@bp_game.get('/leaderboard')
 def leaderboard():
     return render_template('leaderboard.html')
