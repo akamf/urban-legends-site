@@ -6,22 +6,20 @@ from blueprints import bp_legends
 
 @bp_legends.get('/')
 def index():
-    # Presentation (slid-show 1. Välkommen, 2. Läs en legend, 3. Spelet)
-    response = requests.get('http://localhost:8000/legends/legend/6569c205dc70e0fe6ce98f31')
-    data = response.json()
-    print(data)
-
     return render_template('index.html')
-    # return render_template('legend.html', legend=data)
 
 @bp_legends.get('/about')
 def about():
     return render_template('about.html')
 
-@bp_legends.get('/legend/{id}')
-def random_legend(id: str):
-    # Hämta random legend från python api och presentera
-    return render_template('random-legend.html')
+@bp_legends.get('/legend')
+def random_legend():
+    id = requests.get('http://127.0.0.1:8000/legends/random-id').json()
+
+    response = requests.get(f'http://localhost:8000/legends/legend/{id}')
+    data = response.json()
+    
+    return render_template('random-legend.html', legend=data)
 
 @bp_legends.get('/legend/submit')
 def submit_get():
