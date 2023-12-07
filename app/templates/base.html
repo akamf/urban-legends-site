@@ -35,16 +35,15 @@
 <body>
     <header id="header" class="d-flex align-items-center">
         <div class="container d-flex align-items-center">
-            <h1 class="logo me-auto"><a href="{{ url_for('bp_legends.index') }}">Urban Legends</a></h1>
+            <h1 class="logo me-auto"><a href="{{ url_for('bp_home.index') }}">Urban Legends</a></h1>
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="{{ url_for('bp_legends.index') }}">Home</a></li>
-                    <!-- <li><a class="nav-link scrollto" href="{{ url_for('bp_legends.about') }}">About</a></li> -->
+                    <li><a class="nav-link scrollto active" href="{{ url_for('bp_home.index') }}">Home</a></li>
                     <li><a class="nav-link scrollto" href="{{ url_for('bp_legends.random_legend') }}">Explore</a></li>
-                    <li class="dropdown"><a href="#"><span>Legends Unveiled</span> <i class="bi bi-chevron-down"></i></a>
+                    <li class="dropdown"><a href="{{ url_for('bp_game.rules_get') }}"><span>Legends Unveiled</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="{{ url_for('bp_game.game_get') }}">Play</a></li>
+                            <li><a href="{{ url_for('bp_game.rules_get') }}">Play</a></li>
                             <li><a href="{{ url_for('bp_game.leaderboard') }}">Leaderboard</a></li>
                         </ul>
                     </li>
@@ -56,7 +55,7 @@
         </div>
     </header>
     {% block content %} {% endblock %}
-    
+    {% if show_footer %}
     <footer id="footer">
         <div class="container">
             <h3>Urban Legends Unveiled</h3>
@@ -79,6 +78,7 @@
             </div>
         </div>
     </footer>
+    {% endif %}
 
     <script src="static/js/main.js"></script>
     {% block scripts %} {% endblock %}
