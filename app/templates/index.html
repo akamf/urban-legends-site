@@ -33,7 +33,7 @@
                 Delve into the realm of the unknown, make your guesses, and discover the truths behind these captivating tales.<br>
                 Can you separate fact from fiction in this immersive and suspenseful gaming experience?
             </p>
-            <a href="{{ url_for('bp_game.game_get') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Play The Game</a>
+            <a href="{{ url_for('bp_game.rules_get') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Play The Game</a>
         </div>
         </div>
     </div>
@@ -71,3 +71,5 @@
 {% block scripts %}
 <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 {% endblock %}
+
+{% set show_footer = true %}
