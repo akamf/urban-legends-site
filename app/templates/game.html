@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Legends Unveiled - The Game{% endblock %}
+
+{% block content %}
+<section id="contact" class="contact">
+    <div class="container">
+        <h2>Score: {{ score }}</h2>
+</div>
+
+</section>
+<section id="hero">
+<div id="heroCarousel" data-bs-interval="20000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+    <form action="{{ url_for('bp_game.the_game_post') }}" method="post">
+    <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active" style="background-image: url(static/img/slide/slide-1.jpg)">
+        <div class="carousel-container">
+        <div class="container">
+            <h2 class="animate__animated animate__fadeInDown">{{ legends[0].title}}</h2>
+            <p class="animate__animated animate__fadeInUp">{{ legends[0].claim }}</p>
+            <button name="legend" type="submit" class="btn-get-started animate__animated animate__fadeInUp scrollto" value="{{ legends[0].rating }}">Is This True?</button>
+        </div>
+        </div>
+    </div>
+    <div class="carousel-item" style="background-image: url(static/img/slide/slide-2.jpg)">
+        <div class="carousel-container">
+            <div class="container">
+                <h2 class="animate__animated animate__fadeInDown">{{ legends[1].title}}</h2>
+                <p class="animate__animated animate__fadeInUp">{{ legends[1].claim }}</p>
+                <button name="legend" type="submit" class="btn-get-started animate__animated animate__fadeInUp scrollto" value="{{ legends[1].rating }}">Is This True?</button>
+            </div>
+            </div>
+    </div>
+    <div class="carousel-item" style="background-image: url(static/img/slide/slide-3.jpg)">
+        <div class="carousel-container">
+            <div class="container">
+                <h2 class="animate__animated animate__fadeInDown">{{ legends[2].title}}</h2>
+                <p class="animate__animated animate__fadeInUp">{{ legends[2].claim }}</p>
+                <button name="legend" type="submit" class="btn-get-started animate__animated animate__fadeInUp scrollto" value="{{ legends[2].rating }}">Is This True?</button>
+            </div>
+            </div>
+    </div>
+
+    </div>
+    </form>
+
+    <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+    </a>
+
+    <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+    <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+    </a>
+
+</div>
+</section>
+
+{% endblock %}
+
+{% set show_footer = false %}
+
+{% block scripts %}
+<script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="static/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="static/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="static/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="static/js/main.js"></script>
+{% endblock %}

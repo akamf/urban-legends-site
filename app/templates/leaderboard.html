@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Legends Unveiled - The Game{% endblock %}
+
+{% block content %}
+<main id="main">
+    <section id="contact" class="contact">
+        <div class="container">
+    
+        <div class="section-title">
+            <h2>Legends Unveiled - The Game</h2>
+            <p>Leaderboard</p>
+            <ul style="list-style-type: none;">
+                {% for i in range(num_elements) %}
+                <li>{{ i+1 }}. {{ scores[i].username }} - {{ scores[i].score }} pts.</li>
+                {% endfor %}
+            </ul>
+        </div>
+        </div>
+    
+    </section>
+</main>
+
+{% endblock %}
+
+{% set show_footer = true %}

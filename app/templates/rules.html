@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Legends Unveiled - The Game{% endblock %}
+
+{% block content %}
+<main id="main">
+    <section id="contact" class="contact">
+        <div class="container">
+    
+        <div class="section-title">
+            <h2>Legends Unveiled - The Game</h2>
+            <p>Game Rules:</p>
+            <ul style="list-style-type: none;">
+                <li>Display 3 urban legends to the player.</li>
+                <li>Player guesses which legend is true.</li>
+                <li>Score one point for each correct guess.</li>
+                <li>Game continues until the player guesses incorrectly.</li>
+                <li>The player's final score is the total of correct guesses.</li>
+            </ul>
+            <a href="{{ url_for('bp_game.the_game_get') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Play</a>
+        </div>
+        </div>
+    
+    </section>
+</main>
+
+{% endblock %}
+
+{% set show_footer = true %}
