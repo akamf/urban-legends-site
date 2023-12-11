@@ -1,0 +1,4 @@
+# GO_API_URL = 'http://10.128.173.68:81'
+# PYTHON_API_URL = 'http://10.128.18.57:82'
+GO_API_URL = 'http://172.17.0.4:8080'
+PYTHON_API_URL = 'http://172.17.0.2:8000'
