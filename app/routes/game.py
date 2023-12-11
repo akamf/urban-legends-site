@@ -5,6 +5,7 @@ from flask import render_template, redirect, url_for, request
 
 from blueprints import bp_game
 from routes.utils import get_game_assets
+from routes.settings import GO_API_URL, PYTHON_API_URL
 
 score: int = 0
 
@@ -20,7 +21,7 @@ def the_game_get():
     global score
     return render_template(
         'game.html', 
-        legends=get_game_assets('http://localhost:8000/legends/'), 
+        legends=get_game_assets(f'{PYTHON_API_URL}/legends/'), 
         score=score
     )
 
@@ -33,7 +34,7 @@ def the_game_post():
         score += 1
         return redirect(url_for(
             'bp_game.the_game_get', 
-            legends=get_game_assets('http://localhost:8000/legends/'), 
+            legends=get_game_assets(f'{PYTHON_API_URL}/legends/'), 
             score=score
         ))
     else:
@@ -53,7 +54,7 @@ def final_score_post():
     username = request.form.get('username')
 
     response = requests.post(
-        'http://localhost:8080/score/', 
+        f'{GO_API_URL}/score/', 
         data=json.dumps(
             {'Username': username, 'Score': score}
         )
@@ -71,7 +72,7 @@ def final_score_post():
 
 @bp_game.get('/leaderboard')
 def leaderboard():
-    response = requests.get('http://localhost:8080/scores/')
+    response = requests.get(f'{GO_API_URL}/scores/')
     if response.status_code == 200:
         data = response.json()
         scores = sorted(data, key=lambda x: x['score'], reverse=True)
