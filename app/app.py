@@ -14,7 +14,5 @@ def init_app(config_class=Config) -> Flask:
     return _app
 
 
-if __name__ == '__main__':
-    dotenv.load_dotenv()
-    app = init_app()
-    app.run()
+dotenv.load_dotenv()
+app = init_app()

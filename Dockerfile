@@ -2,6 +2,9 @@ FROM python:alpine
 
 WORKDIR /app
 
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
 COPY /app/.env .env
 
 RUN python3 -m venv /opt/venv
@@ -15,5 +18,4 @@ COPY /app/. .
 
 EXPOSE 5000
 
-# CMD [ "gunicorn", "-c", "gunicorn.conf.py", "app:app" ]
-CMD [ "python3", "app.py"]
+CMD [ "gunicorn", "wsgi:app", "-b", "0.0.0.0:5000" ]
