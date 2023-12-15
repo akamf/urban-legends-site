@@ -1,8 +1,8 @@
+import os
 from flask import render_template
 
 from blueprints import bp_legends, bp_home
 from routes.utils import get_random_legend
-from routes.settings import PYTHON_API_URL
 
 @bp_home.get('/')
 def index():
@@ -12,7 +12,7 @@ def index():
 def random_legend():
     return render_template(
         'random-legend.html', 
-        legend=get_random_legend(f'{PYTHON_API_URL}/legends/')
+        legend=get_random_legend(f'{os.enviorn["PYTHONAPI_ENDPOINT"]}/legends/')
     )
 
 @bp_legends.get('/submit')

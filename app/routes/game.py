@@ -1,3 +1,4 @@
+import os
 import json
 import requests
 
@@ -5,7 +6,6 @@ from flask import render_template, redirect, url_for, request
 
 from blueprints import bp_game
 from routes.utils import get_game_assets
-from routes.settings import GO_API_URL, PYTHON_API_URL
 
 score: int = 0
 
@@ -21,7 +21,7 @@ def the_game_get():
     global score
     return render_template(
         'game.html', 
-        legends=get_game_assets(f'{PYTHON_API_URL}/legends/'), 
+        legends=get_game_assets(f'{os.environ["PYTHONAPI_ENDPOINT"]}/legends/'), 
         score=score
     )
 
@@ -34,14 +34,14 @@ def the_game_post():
         score += 1
         return redirect(url_for(
             'bp_game.the_game_get', 
-            legends=get_game_assets(f'{PYTHON_API_URL}/legends/'), 
+            legends=get_game_assets(f'{os.environ["PYTHONAPI_ENDPOINT"]}/legends/'), 
             score=score
         ))
-    else:
-        return redirect(url_for(
-            'bp_game.final_score_get',
-            score=score
-        ))
+    
+    return redirect(url_for(
+        'bp_game.final_score_get',
+        score=score
+    ))
 
 @bp_game.get('/final-score')
 def final_score_get():
@@ -54,7 +54,7 @@ def final_score_post():
     username = request.form.get('username')
 
     response = requests.post(
-        f'{GO_API_URL}/score/', 
+        f'{os.environ["GOAPI_ENDPOINT"]}/score/', 
         data=json.dumps(
             {'Username': username, 'Score': score}
         )
@@ -62,17 +62,17 @@ def final_score_post():
 
     if response.status_code == 200:
         print("POST request was successful!")
-        print("Response:", response.text)
     else:
         print(f"POST request failed with status code {response.status_code}")
-        print("Response:", response.text)
+        
+    print("Response:", response.text)
 
     return redirect(url_for('bp_game.rules_get'))
 
 
 @bp_game.get('/leaderboard')
 def leaderboard():
-    response = requests.get(f'{GO_API_URL}/scores/')
+    response = requests.get(f'{os.environ["GOAPI_ENDPOINT"]}/scores/')
     if response.status_code == 200:
         data = response.json()
         scores = sorted(data, key=lambda x: x['score'], reverse=True)
