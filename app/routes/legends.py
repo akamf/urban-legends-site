@@ -12,7 +12,7 @@ def index():
 def random_legend():
     return render_template(
         'random-legend.html', 
-        legend=get_random_legend(f'{os.enviorn["PYTHONAPI_ENDPOINT"]}/legends/')
+        legend=get_random_legend(f'{os.environ["PYTHONAPI_ENDPOINT"]}/legends/')
     )
 
 @bp_legends.get('/submit')
