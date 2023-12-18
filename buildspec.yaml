@@ -7,7 +7,7 @@ phases:
     commands:
       - python3 -m venv /root/venv
       - . /root/venv/bin/activate
-      - pip3 install -r requirements.txt
+      - pip3 install -r ./app/requirements.txt
   build:
     commands:
       - pytest
