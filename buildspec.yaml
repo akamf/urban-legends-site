@@ -2,9 +2,19 @@ version: 0.2
 
 phases:
   install:
+    rutime-versions:
+      python: 3.10
     commands:
+      - python3 -m venv /root/venv
+      - . /root/venv/bin/activate
+      - pip3 install -r ./app/requirements.txt
   build:
     commands:
+      - pytest
       - docker login -u andreas.eliasson -p yacloud1 https://git.systementor.se
       - docker build -t git.systementor.se/andreas.eliasson/urbanlegends-flasksite .
       - docker push git.systementor.se/andreas.eliasson/urbanlegends-flasksite
+cache:
+  paths:
+    - '/root/venv/**/'
+    - '/root/.cache/pip/**/'
