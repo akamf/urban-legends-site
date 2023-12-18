@@ -1,8 +1,8 @@
 import os
 from flask import render_template
 
-from blueprints import bp_legends, bp_home
-from routes.utils import get_random_legend
+from app.blueprints import bp_legends, bp_home
+from app.routes.utils import get_random_legend
 
 @bp_home.get('/')
 def index():

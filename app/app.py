@@ -1,8 +1,8 @@
 import dotenv
 from flask import Flask
 
-from blueprints import bp_legends, bp_game, bp_home
-from config import Config
+from app.blueprints import bp_legends, bp_game, bp_home
+from app.config import Config
 
 def init_app(config_class=Config) -> Flask:
     _app = Flask(__name__)

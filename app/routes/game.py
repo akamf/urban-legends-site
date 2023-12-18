@@ -4,8 +4,8 @@ import requests
 
 from flask import render_template, redirect, url_for, request
 
-from blueprints import bp_game
-from routes.utils import get_game_assets
+from app.blueprints import bp_game
+from app.routes.utils import get_game_assets
 
 score: int = 0
 

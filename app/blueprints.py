@@ -23,5 +23,5 @@ bp_game = Blueprint(
     url_prefix='/legends-unveild/the-game'
 )
 
-from routes.legends import *
-from routes.game import *
+from app.routes.legends import *
+from app.routes.game import *
